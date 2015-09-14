@@ -9,12 +9,12 @@
 <script type="text/javascript">
 
 var m1 = angular.module("myApp",[]) ;
-m1.controller("Aaa",function($scope){
+m1.controller("Aaa",["$scope",function($scope){
     $scope.name = "maotingfeng";
-})
-m1.controller("Bbb",function($scope){
-    $scope.name = "hjh";
-})
+}]);
+m1.controller("Bbb",["$scope",function($scope){
+    $scope.name = "hjhaa";
+}]);
 
 </script>
 </head>
