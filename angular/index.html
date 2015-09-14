@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="myApp">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -7,38 +7,24 @@
 <!-- 1.3.0 beta14 支持 controller -->
 <script type="text/javascript" src="http://cdn.bootcss.com/angular.js/1.3.0-beta.14/angular.min.js"></script>
 <script type="text/javascript">
-function Aaa( $scope , $rootScope , $timeout ){
-    $scope.iphone = {
-        amount: 5 ,
-        num : 1 ,
-        fre : 10
-    } ;
-    $scope.sum = function(){
-        return $scope.iphone.amount * $scope.iphone.num ;
-    }
-    // $scope.$watch( "iphone" ,function(newVal,oldVal){
-    //     console.log( newVal , oldVal );
-    // },true);
 
-    $scope.$watch( $scope.sum ,function(newVal,oldVal){
+var m1 = angular.module("myApp",[]) ;
+m1.controller("Aaa",function($scope){
+    $scope.name = "maotingfeng";
+})
+m1.controller("Bbb",function($scope){
+    $scope.name = "hjh";
+})
 
-        $scope.iphone.fre = newVal >= 100 ? 0 : 10 ;
-        //console.log( newVal , oldVal );
-    });
-}
 </script>
 </head>
 <body>
 
     <div ng-controller="Aaa">
-        <input type="text" ng-model="iphone.amount" />
-        <input type="text" ng-model="iphone.num" />
-
-        <p>单价：{{ iphone.amount }}</p>
-        <p>数量：{{ iphone.num }}</p>
-        <p>费用：{{ sum() | currency:"¥" }}</p>
-        <p>运费：{{ iphone.fre | currency:"¥" }}</p>
-        <p>总额：{{ sum() + iphone.fre | currency:"¥" }}</p>
+        <p>{{name}}</p>
+    </div>
+    <div ng-controller="Bbb">
+        <p>{{name}}</p>
     </div>
 
 
