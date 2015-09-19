@@ -17,10 +17,7 @@ var m1 = angular.module("myApp",[]) ;
 m1.controller("Aaa",["$scope","$interval",function($scope,$interval){
 
 
-    $scope.sClass = "{ red: true }";
-    $scope.sStrle = '{ "color": "white" , "background": "red" }';
-    $scope.href = "http://www.baidu.com";
-    $scope.src = "//www.baidu.com/img/bdlogo.png";
+    $scope.isShow = true ;
 
 }]);
 //angular.bootstrap(document,["myApp"])           // 初始化模块
@@ -30,11 +27,19 @@ m1.controller("Aaa",["$scope","$interval",function($scope,$interval){
 <body>
 
     <div id="aa" ng-controller="Aaa">
-        <p ng-class="{{ sClass }}">123</p>
-        <p ng-style="{{ sStrle }}">123</p>
-        <a ng-href=" {{ href }} ">百度</a>
-        <img ng-src=" {{ src }} " ng-attr-width="{{ 100 }}" ng-attr-height="{{ 100 }}">
+        <input type="checkbox" ng-model="isShow">
+        <p ng-show="isShow">123</p>
+        <p ng-hide="isShow">456</p>
 
+        <div ng-if="isShow">ng-if</div>
+
+
+        <p ng-switch on="isShow" >
+            <span ng-switch-default >aaa</span>
+            <span ng-switch-when="false">bbb</span><span ng-switch-when="true">vvv</span>
+        </p>
+
+        <!-- ng-open detailsb 标签打开关闭 -->
     </div>
 
 </body>
