@@ -9,8 +9,13 @@
 <script type="text/javascript">
 
 var m1 = angular.module("myApp",[]) ;
+m1.filter("firstUppercase",function(){
+    return function(str){
+        return str.charAt(0).toUpperCase() + str.substring(1);
+    }
+});
 m1.controller("Aaa",["$scope","$filter",function($scope,$filter){
-    $scope.name = $filter("uppercase")("maotingfeng");
+    $scope.name = $filter("firstUppercase")("maotingfeng");
 
 }]);
 //angular.bootstrap(document,["myApp"])           // 初始化模块
@@ -20,7 +25,7 @@ m1.controller("Aaa",["$scope","$filter",function($scope,$filter){
 <body>
 
     <div id="aa" ng-controller="Aaa">
-        <pre>{{name }}</pre>
+        <pre>{{ name | firstUppercase }}</pre>
     </div>
 
 </body>
