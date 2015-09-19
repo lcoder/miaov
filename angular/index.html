@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -9,46 +9,19 @@
 <script type="text/javascript">
 
 var m1 = angular.module("myApp",[]) ;
-m1.controller("Aaa",["$scope",function($scope){
-    $scope.name = "maotingfeng";
-    setTimeout(function(){
-        $scope.$apply(function(){
-            $scope.name = "hahhah";
-        });
-    },2000);
+m1.controller("Aaa",["$scope","$filter",function($scope,$filter){
+    $scope.name = $filter("uppercase")("maotingfeng");
 
 }]);
-m1.controller("Bbb",["$scope",function($scope){
-    $scope.name = "hjhaa";
-}]);
+//angular.bootstrap(document,["myApp"])           // 初始化模块
 
-// angular工具方法
-// angular.bind()               修改this指向
-// angular.copy(a,b)            a覆盖了b，返回值为a
-// angular.extend(a,b)          继承，a继承了b
-
-
-document.onclick = function(){
-    angular.bootstrap(document,["myApp"])           // 初始化模块
-}
-
-m1.run(function($rootScope){
-    $rootScope.age = 20 ;
-});
 </script>
 </head>
 <body>
 
     <div id="aa" ng-controller="Aaa">
-        <p>{{name}}</p>
+        <pre>{{name }}</pre>
     </div>
-    <div ng-controller="Bbb">
-        <p>{{name}}</p>
-    </div>
-
-<div>
-    {{age}}
-</div>
 
 </body>
 </html>
