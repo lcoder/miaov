@@ -14,21 +14,19 @@
 
 var m1 = angular.module("myApp",[]) ;
 
-m1.controller("Aaa",["$scope","$interval",function($scope,$interval){
-
-
-    $scope.arr = [ ['a','b'] , ['c','d'] ] ;
-
-}]);
+m1.controller("Aaa",["$scope","$interval",Aaa]);
 //angular.bootstrap(document,["myApp"])           // 初始化模块
-
+function Aaa($scope){ }
+Aaa.prototype.text = "hello";
+Aaa.prototype.show = function(){
+    return "angularJS";
+}
 </script>
 </head>
 <body>
 
-    <div id="aa" ng-controller="Aaa">
-        <input type="text" ng-model="text1" ng-model-options="{updateOn:'blur'}">
-        {{ text1 }}
+    <div id="aa" ng-controller="Aaa as a1">
+        {{ a1.text }}: {{ a1.show() }}
     </div>
 
 </body>
