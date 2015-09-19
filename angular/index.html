@@ -31,9 +31,11 @@ m1.controller("Aaa",["$scope","$filter",function($scope,$filter){
 <body>
 
     <div id="aa" ng-controller="Aaa">
-        <ul>
-            <li style="background-color: {{ $odd ? 'red': 'blue' }}" ng-repeat=" data in dataList ">{{ data.name + "  " + $middle }}</li>
-        </ul>
+        <input type="checkbox" ng-model="aaa">
+        <select>
+            <option>111</option>
+            <option ng-selected="aaa" >222</option>
+        </select>
     </div>
 
 </body>
