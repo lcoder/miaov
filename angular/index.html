@@ -39,7 +39,9 @@ m1.controller("Aaa",["$scope","$interval",function($scope,$interval){
 
     <div id="aa" ng-controller="Aaa">
         <input type="button" value="{{ text }}" ng-disabled="isDisabled">
-
+        <input type="text" value="{{ text }}" ng-readonly="isDisabled">
+        <input type="checkbox" value="{{ text }}" ng-checked="isDisabled">
+        <input type="text" ng-value="text" >
     </div>
 
 </body>
