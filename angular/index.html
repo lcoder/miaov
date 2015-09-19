@@ -26,14 +26,8 @@ m1.controller("Aaa",["$scope","$interval",function($scope,$interval){
 </head>
 <body>
 
-    <div id="aa" ng-controller="Aaa">
-        <div>
-            <div ng-repeat="arrOuter in arr" ng-init="$outIndex = $index">
-                <div ng-repeat="arrInner in arrOuter" ng-init="$innerIndex = $index">
-                    {{ arrInner }} {{ $outIndex }} {{ $innerIndex }}
-                </div>
-            </div>
-        </div>
+    <div id="aa" ng-controller="Aaa"  ng-include="'temple.html'">
+
     </div>
 
 </body>
