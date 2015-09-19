@@ -15,8 +15,20 @@ m1.filter("firstUppercase",function(){
     }
 });
 m1.controller("Aaa",["$scope","$filter",function($scope,$filter){
-    $scope.name = $filter("firstUppercase")("maotingfeng");
-
+    var origin_data = [
+        { name: "maotingfeng" , age: "20" } ,
+        { name: "red" , age: "24" } ,
+        { name: "dark" , age: "30" } ,
+        { name: "green" , age: "10" }
+    ]
+    $scope.dataList = origin_data ;
+    $scope.fnSort = function(args){
+        arguments.callee["fnSort"+args] = !arguments.callee["fnSort"+args] ;
+        $scope.dataList = $filter("orderBy")( $scope.dataList , args , arguments.callee["fnSort"+args] );
+    }
+    $scope.fnFilter = function(){
+        $scope.dataList = $filter("filter")( origin_data , $scope.filterVal );
+    }
 }]);
 //angular.bootstrap(document,["myApp"])           // 初始化模块
 
@@ -25,7 +37,18 @@ m1.controller("Aaa",["$scope","$filter",function($scope,$filter){
 <body>
 
     <div id="aa" ng-controller="Aaa">
-        <pre>{{ name | firstUppercase }}</pre>
+        <input type="text" ng-model="filterVal" >
+        <input type="button" ng-click="fnFilter()" value="搜索" >
+        <table border="1">
+            <tr>
+                <th ng-click="fnSort('name')">姓名</th>
+                <th ng-click="fnSort('age')">年龄</th>
+            </tr>
+            <tr ng-repeat=" data in dataList ">
+                <td>{{ data.name }}</td>
+                <td>{{ data.age }}</td>
+            </tr>
+        </table>
     </div>
 
 </body>
