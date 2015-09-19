@@ -32,8 +32,8 @@ m1.controller("Aaa",["$scope","$interval",function($scope,$interval){
 
     <div id="aa" ng-controller="Aaa">
         <p ng-bind="text"></p>
-        <p ng-bind-template="{{text}},hehe,{{text}}"></p>
-        <p ng-bind-html="htmltext"></p>
+        <p ng-cloak>{{ text }}</p>
+        <p ng-non-bindable>{{ text }}</p>
     </div>
 
 </body>
