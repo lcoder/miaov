@@ -31,8 +31,14 @@ m1.controller("Aaa",["$scope","$filter",function($scope,$filter){
 <body>
 
     <div id="aa" ng-controller="Aaa">
-        <input type="text" ng-change="bbb='hello'" ng-model="bbb">
+        <input type="text" ng-copy="bbb='拷贝'" value="拷贝maotingfeng">
         {{ bbb }}
+
+        <input type="text" ng-cut="ccc='剪切'" value="剪切maotingfeng">
+        {{ ccc }}
+
+        <input type="text" ng-paste="ddd='黏贴'" value="黏贴maotingfeng">
+        {{ ddd }}
 
     </div>
 
