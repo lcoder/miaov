@@ -26,8 +26,9 @@ m1.controller("Aaa",["$scope","$interval",function($scope,$interval){
 </head>
 <body>
 
-    <div id="aa" ng-controller="Aaa"  ng-include="'temple.html'">
-
+    <div id="aa" ng-controller="Aaa">
+        <input type="text" ng-model="text1" ng-model-options="{updateOn:'blur'}">
+        {{ text1 }}
     </div>
 
 </body>
