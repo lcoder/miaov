@@ -17,7 +17,7 @@ var m1 = angular.module("myApp",[]) ;
 m1.controller("Aaa",["$scope","$interval",function($scope,$interval){
 
 
-    $scope.isShow = true ;
+    $scope.arr = [ ['a','b'] , ['c','d'] ] ;
 
 }]);
 //angular.bootstrap(document,["myApp"])           // 初始化模块
@@ -27,19 +27,13 @@ m1.controller("Aaa",["$scope","$interval",function($scope,$interval){
 <body>
 
     <div id="aa" ng-controller="Aaa">
-        <input type="checkbox" ng-model="isShow">
-        <p ng-show="isShow">123</p>
-        <p ng-hide="isShow">456</p>
-
-        <div ng-if="isShow">ng-if</div>
-
-
-        <p ng-switch on="isShow" >
-            <span ng-switch-default >aaa</span>
-            <span ng-switch-when="false">bbb</span><span ng-switch-when="true">vvv</span>
-        </p>
-
-        <!-- ng-open detailsb 标签打开关闭 -->
+        <div>
+            <div ng-repeat="arrOuter in arr" ng-init="$outIndex = $index">
+                <div ng-repeat="arrInner in arrOuter" ng-init="$innerIndex = $index">
+                    {{ arrInner }} {{ $outIndex }} {{ $innerIndex }}
+                </div>
+            </div>
+        </div>
     </div>
 
 </body>
